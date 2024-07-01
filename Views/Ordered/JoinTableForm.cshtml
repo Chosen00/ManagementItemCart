@@ -1,0 +1,135 @@
+﻿@model CustomerCart.Models.JoinModel
+
+@{
+    ViewData["Title"] = "Join Table";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body {
+        background-color: #ffe6f2;
+    }
+</style>
+
+<div class="container">
+    <h2 class="text-center mb-4">Ordered Table</h2>
+    <div class="table-responsive">
+        @if (Model.OrderedItems == null || !Model.OrderedItems.Any())
+        {
+            <p>No ordered items found.</p>
+        }
+        else
+        {
+            <table class="table table-striped table-bordered">  
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Ordered Item ID</th>
+                        <th>Item Name</th>
+                        <th>Item Brand</th>
+                        <th>Quantity Ordered</th>
+                        <th>Price</th>
+                        <th>Date Ordered</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var ordered in Model.OrderedItems)
+                    {
+                        <tr>
+                            <td>@ordered.OrderedItemId</td>
+                            <td>@ordered.ItemName</td>
+                            <td>@ordered.ItemBrand</td>
+                            <td>@ordered.QuantityOrdered</td>
+                            <td>@ordered.Price</td>
+                            <td>@ordered.DateOrdered.ToString("yyyy-MM-dd")</td>
+                            <td>
+                                <form method="post" action="@Url.Action("JoinTableForm", "Ordered")" style="display: inline;">
+                                    <input type="hidden" name="orderedItemId" value="@ordered.OrderedItemId" />
+                                    <button type="submit" class="btn btn-danger btn-sm" style="width: 70px;">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </button>
+                                </form>
+
+                                <form method="post" action="@Url.Action("UpdateOrderedForm", "Ordered")" style="display: inline;">
+                                    <input type="hidden" name="OrderedItemId" value="@ordered.OrderedItemId" />
+                                    <input type="hidden" name="ItemName" value="@ordered.ItemName" />
+                                    <input type="hidden" name="ItemBrand" value="@ordered.ItemBrand" />
+                                    <input type="hidden" name="QuantityOrdered" value="@ordered.QuantityOrdered" />
+                                    <input type="hidden" name="Price" value="@ordered.Price" />
+                                    <input type="hidden" name="DateOrdered" value="@ordered.DateOrdered" />
+                                    <button type="submit" class="btn btn-primary btn-sm" style="width: 70px;">
+                                        <i class="fas fa-edit"></i> Update
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+
+<div class="container">
+    <h2 class="text-center mb-4">Sold Table</h2>
+    <div class="table-responsive">
+        @if (Model.SoldItems == null || !Model.SoldItems.Any())
+        {
+            <p>No sold items found.</p>
+        }
+        else
+        {
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Sold Item ID</th>
+                        <th>Item Name</th>
+                        <th>Item Brand</th>
+                        <th>Quantity Sold</th>
+                        <th>Price</th>
+                        <th>Date Sold</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var sold in Model.SoldItems)
+                    {
+                        <tr>
+                            <td>@sold.SoldItemID</td>
+                            <td>@sold.ItemName</td>
+                            <td>@sold.ItemBrand</td>
+                            <td>@sold.QuantitySold</td>
+                            <td>@sold.Price</td>
+                            <td>@sold.DateSold.ToString("yyyy-MM-dd")</td>
+                            <td>
+                                <form method="post" action="@Url.Action("JoinTableForm", "Ordered")" style="display: inline;">
+                                    <input type="hidden" name="SoldItemID" value="@sold.SoldItemID" />
+                                    <button type="submit" class="btn btn-danger btn-sm" style="width: 70px;">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </button>
+                                </form>
+                                <form method="post" action="@Url.Action("UpdateSoldForm", "Sold")" style="display: inline;">
+                                    <input type="hidden" name="SoldItemID" value="@sold.SoldItemID" />
+                                    <input type="hidden" name="ItemName" value="@sold.ItemName" />
+                                    <input type="hidden" name="ItemBrand" value="@sold.ItemBrand" />
+                                    <input type="hidden" name="QuantitySold" value="@sold.QuantitySold" />
+                                    <input type="hidden" name="Price" value="@sold.Price" />
+                                    <input type="hidden" name="DateSold" value="@sold.DateSold" />
+                                    <button type="submit" class="btn btn-primary btn-sm" style="width: 70px;">
+                                        <i class="fas fa-edit"></i> Update
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+    <div class="col-md-3 text-right">
+        <a href="@Url.Action("DashboardForm", "Home")" class="btn btn-primary">Back</a>
+    </div>
+    <br />
+    <br />
+    <br />
+</div>

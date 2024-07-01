@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management Item Cart</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #ffe6f2;
+        }
+        .card {
+            height: 75vh; /* 100% of viewport height */
+            width: 170vh;
+            margin: 0;
+            border: none;
+            border-radius: 25px;
+            box-shadow: none;
+            background-color: #f8b8d4; /* Pink background color */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container-fluid {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .card-title {
+            color: #fff; /* White text color */
+        }
+
+        .card-text {
+            color: #333; /* Dark text color */
+        }
+
+        .btn-primary {
+            background-color: #ff6b9a; /* Pink button color */
+            border-color: #ff6b9a; /* Pink button border color */
+        }
+
+            .btn-primary:hover {
+                background-color: #e45285; /* Lighter pink button color on hover */
+                border-color: #e45285; /* Lighter pink button border color on hover */
+            }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col">
+                <div class="card m-0">
+                    <!-- Added m-0 class -->
+                    <div class="card-body text-center">
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <h1 class="display-4 card-title">Welcome to Management Item Cart System</h1>
+                        <p class="lead card-text">Manage your Sold and Oredered Items</p>
+                        <br />
+                        <a asp-controller="Home" asp-action="DashboardForm" class="btn btn-primary btn-lg">Enter Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

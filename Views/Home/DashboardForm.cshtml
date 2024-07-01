@@ -1,0 +1,96 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #ffe6f2;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dashboard {
+            text-align: center;
+            background: white;
+            padding: 70px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #ff66b2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+            button:hover {
+                background-color: #e60073;
+            }
+
+        h1 {
+            color: #ff3399;
+        }
+
+        .privacy {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard">
+            <h1>Dashboard</h1>
+            <div class="buttons">
+                <button id="soldItemButton">Sold Item</button>
+                <button id="orderedItemButton">Ordered Item</button>
+            </div>
+            <div class="mt-4">
+                <button id="joinTableButton">Sold/Ordered Table</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('soldItemButton').addEventListener('click', function () {
+            window.location.href = '/Sold/SoldForm'; // Redirect to the Sold Items page
+        });
+
+        document.getElementById('orderedItemButton').addEventListener('click', function () {
+            window.location.href = '/Ordered/OrderedForm'; // Redirect to the Ordered Items page
+        });
+
+        document.getElementById('joinTableButton').addEventListener('click', function () {
+            window.location.href = '/Ordered/JoinTableForm'; // Redirect to the Table page
+        });
+    </script>
+</body>
+</html>

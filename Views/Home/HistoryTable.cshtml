@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CustomerCart.Models.SoldOrderedModel>
+
+@{
+    ViewData["Title"] = "Sold/Ordered History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body {
+        background-color: #ffe6f2;
+    }
+
+    .hover-btn:hover {
+        background-color: #ff007f; /* New color on hover */
+        border-color: #ff007f; /* New border color on hover */
+    }
+
+</style>
+
+<div class="container">
+    <h2 class="text-center mb-4">Sold/Ordered History</h2>
+    <div class="table-responsive">
+        @if (Model == null || !Model.Any())
+        {
+            <div class="alert alert-info" role="alert">
+                <strong>No history records found.</strong>
+            </div>
+        }
+        else
+        {
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Sold Item ID</th>
+                        <th scope="col">Ordered Item ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.sold_item_SoldItemID</td>
+                            <td>@item.ordered_item_OrderedItemId</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+    <div class="text-center mt-4">
+        <a href="@Url.Action("DashboardForm", "Home")" class="btn btn-primary hover-btn" style="background-color: #ff1493; border-color: #ff1493;">Back to Dashboard</a>
+    </div>
+</div>
